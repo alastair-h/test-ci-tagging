@@ -34,6 +34,8 @@ jobs:
           git add time.txt
           git commit -m "new date commit"
           git push origin main
-      - name: list tags
+      - name: tags
         run: git tag -a v1.5 -m "my version 1.5"
+      - name: Ls2
+        run: ls -a
 
