@@ -19,4 +19,4 @@ jobs:
       - name: Ls
         run: ls
       - name: list tags
-        run: git tag
+        run: git --no-pager tag tag
