@@ -33,7 +33,7 @@ jobs:
           # Stage the file, commit and push
           git add time.txt
           git commit -m "new date commit"
-          git push origin master
+          git push origin main
       - name: list tags
         run: git --no-pager tag
 
