@@ -1,4 +1,4 @@
 [tool.poetry]
 name = "hello-world"
-version = "2.9.292"
+version = "2.9.293"
 description = ""

@@ -35,7 +35,7 @@ jobs:
           git commit -m "new date commit"
           git push origin main
       - name: tags
-        run: ./tag.sh
+        run: git --no-pager tag
       - name: Ls2
         run: ls -a
 
