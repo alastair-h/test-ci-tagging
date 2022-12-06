@@ -35,5 +35,5 @@ jobs:
           git commit -m "new date commit"
           git push origin main
       - name: list tags
-        run: git --no-pager tag
+        run: git tag -a v1.5 -m "my version 1.5"
 
