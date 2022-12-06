@@ -4,7 +4,7 @@ name: push_image_and_trigger_and_update_semver.yml
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'pyproject.toml'
 
