@@ -19,8 +19,9 @@ jobs:
       - name: Get Poetry Version
         id: poetry-version
         run:
-          SEMANTIC_VERSION=$(poetry version | awk 'NF>1{print $NF}')
-          && echo "semantic_version=$SEMANTIC_VERSION" >> $GITHUB_ENV
+#          SEMANTIC_VERSION=$(poetry version | awk 'NF>1{print $NF}')
+#          && echo "semantic_version=$SEMANTIC_VERSION" >> $GITHUB_ENV
+          SEMANTIC_VERSION=$(cat pyproject.toml | grep version | cut -d '"' -f2)
 
       - name: setup git config
         run: |
