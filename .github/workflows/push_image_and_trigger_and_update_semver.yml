@@ -31,5 +31,5 @@ jobs:
       - name: tags
         run: |
           git fetch --all --tags
-          git tag -a v($SEMANTIC_VERSION) -m "my version $SEMANTIC_VERSION"
+          git tag -a v$SEMANTIC_VERSION -m "my version $SEMANTIC_VERSION"
           git push origin v$SEMANTIC_VERSION
