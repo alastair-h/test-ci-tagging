@@ -16,11 +16,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Get Poetry Version
-        id: poetry-version
-        run:
-          SEMANTIC_VERSION=$(poetry version | awk 'NF>1{print $NF}')
-          && echo "semantic_version=$SEMANTIC_VERSION" >> $GITHUB_ENV
+#      - name: Get Poetry Version
+#        id: poetry-version
+#        run:
+#          SEMANTIC_VERSION=$(poetry version | awk 'NF>1{print $NF}')
+#          && echo "semantic_version=$SEMANTIC_VERSION" >> $GITHUB_ENV
 
       - name: setup git config
         run: |
@@ -30,6 +30,8 @@ jobs:
 
       - name: tags
         run: |
+          SEMANTIC_VERSION=$(poetry version | awk 'NF>1{print $NF}')
+          && echo "semantic_version=$SEMANTIC_VERSION" >> $GITHUB_ENV
           git fetch --all --tags
           git tag -a v$SEMANTIC_VERSION -m "my version $SEMANTIC_VERSION"
           git push origin v$SEMANTIC_VERSION
