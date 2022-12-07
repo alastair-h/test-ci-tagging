@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hello-world"
-version = "2.9.3"
+version = "2.9.31"
 description = ""
 authors = [
     "Alastair Hist <alastair@allread.ai>"
