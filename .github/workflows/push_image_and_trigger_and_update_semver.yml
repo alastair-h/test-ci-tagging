@@ -24,14 +24,13 @@ jobs:
           echo "semantic_version=$SEMANTIC_VERSION" >> $GITHUB_ENV
           echo "semantic_version=$SEMANTIC_VERSION"
 
-#      - name: setup git config
-#        run: |
-#          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
-#          git config user.name "GitHub Actions Bot"
-#          git config user.email "<>"
-
-      - name: tags
+      - name: setup git config
+        run: |
+          # setup the username and email.This is required to push the tag
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      - name: tag new version
         run: |
           git fetch --all --tags
-          git tag -a v${{ env.semantic_version }} -m "my version"
+          git tag -a v${{ env.semantic_version }} -m "update version to v${{ env.semantic_version }}"
           git push origin v${{ env.semantic_version }}
