@@ -34,7 +34,9 @@ jobs:
           git add time.txt
           git commit -m "new date commit"
           git push origin main
+          git fetch --all --tags
           git --no-pager tag
+
       - name: tags
         run: git --no-pager tag
       - name: Ls2
