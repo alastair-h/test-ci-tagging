@@ -16,29 +16,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Ls
-        run: ls
-      - name: save current date
-        run: |
-          # do some operation that changes a file in the git repo
-          date > time.txt
+      - name: Get Poetry Version
+        id: poetry-version
+        run:
+          SEMANTIC_VERSION=$(poetry version | awk 'NF>1{print $NF}')
+          && echo "semantic_version=$SEMANTIC_VERSION" >> $GITHUB_ENV
+
       - name: setup git config
         run: |
           # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
 
-      - name: commit
-        run: |
-          # Stage the file, commit and push
-          git add time.txt
-          git commit -m "new date commit"
-          git push origin main
-          git fetch --all --tags
-          git --no-pager tag
-
       - name: tags
-        run: git --no-pager tag
-      - name: Ls2
-        run: ls -a
-
+        run: |
+          git fetch --all --tags
+          git tag -a v($SEMANTIC_VERSION) -m "my version $SEMANTIC_VERSION"
+          git push origin v($SEMANTIC_VERSION)
