@@ -26,10 +26,10 @@ jobs:
         run: |
           # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
           git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
+          git config user.email "<>"  
 
       - name: tags
         run: |
           git fetch --all --tags
           git tag -a v($SEMANTIC_VERSION) -m "my version $SEMANTIC_VERSION"
-          git push origin v($SEMANTIC_VERSION)
+          git push origin v$SEMANTIC_VERSION
